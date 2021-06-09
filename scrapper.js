@@ -93,7 +93,7 @@ async function scrapper(keyword, location, hash) {
   fs.writeFileSync(filePath, data);
 
   console.log("Found Job Postings:", jobPostings.length);
-  console.log("Outputs:", jobPostings.length);
+  console.log("Outputs:", filePath);
 }
 
 module.exports = queueJob;
