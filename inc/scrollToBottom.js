@@ -17,13 +17,12 @@ async function scrollPageToBottom(page, scrollStep = 800, scrollDelay = 800) {
 
       const position = await new Promise((resolve) => {
         let count = 0;
+        
         const intervalId = setInterval(() => {
           const { body } = document;
           const availableScrollHeight = getScrollHeight(body);
-
           window.scrollBy(0, step);
           count += step;
-
           if (count >= availableScrollHeight) {
             clearInterval(intervalId);
             resolve(count);

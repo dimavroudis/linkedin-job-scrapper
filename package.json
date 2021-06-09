@@ -1,0 +1,30 @@
+{
+  "name": "linkedin-scrapper-service",
+  "version": "1.0.0",
+  "description": "Linked Scrapper Server made with Node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dimavroudis/linkedin-job-scrapper.git"
+  },
+  "keywords": [
+    "node",
+    "scrapper",
+    "linkedin"
+  ],
+  "author": "Dimitris Mavroudis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dimavroudis/linkedin-job-scrapper/issues"
+  },
+  "homepage": "https://github.com/dimavroudis/linkedin-job-scrapper#readme",
+  "dependencies": {
+    "cheerio": "*",
+    "express": "^4.17.1",
+    "puppeteer": "^10.0.0",
+    "string-hash-64": "^1.0.3"
+  }
+}
