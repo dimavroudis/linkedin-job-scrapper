@@ -1,6 +1,6 @@
 {
   "name": "linkedin-scrapper-service",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Linked Scrapper Server made with Node.js",
   "main": "app.js",
   "scripts": {
