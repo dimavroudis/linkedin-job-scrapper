@@ -14,6 +14,14 @@ const staticOptions = {
 // Start app
 const app = express();
 
+// Return Endpoints index
+app.get("/", (req, res) => {
+  res.json({
+    name: "LinkedIn Job Postings Scrapper",
+    routes: app._router.stack.filter(r => r.route).map(r => ({path : r.route.path, keys: r.keys, methods: r.route.methods}))
+  });
+});
+
 // Start a scrap process and return id and url for the results
 app.get("/keyword/:keyword/location/:location", (req, res) => {
   let hash = scrap(req.params.keyword, req.params.location);
@@ -22,6 +30,12 @@ app.get("/keyword/:keyword/location/:location", (req, res) => {
 
 // Return the results of a scrap process  when complete
 app.use("/job-postings", express.static("jobPostings", staticOptions));
+
+// Custom Error Handling
+app.use(function (err, req, res, next) {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
 
 app.listen(port, () => {
   // Server running...
