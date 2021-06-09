@@ -1,41 +1,24 @@
 /**
  * Scrolling page to bottom based on Body element
  * @param {Object} page Puppeteer page object
- * @param {Number} scrollStep Number of pixels to scroll on each step
- * @param {Number} scrollDelay A delay between each scroll step
- * @returns {Number} Last scroll position
  */
-async function scrollPageToBottom(page, scrollStep = 800, scrollDelay = 800) {
-  const lastPosition = await page.evaluate(
-    async (step, delay) => {
-      const getScrollHeight = (element) => {
-        if (!element) return 0;
+ async function scrollPageToBottom(page){
+  await page.evaluate(async () => {
+      await new Promise((resolve, reject) => {
+          var totalHeight = 0;
+          var distance = 400;
+          var timer = setInterval(() => {
+              var scrollHeight = document.body.scrollHeight;
+              window.scrollBy(0, distance);
+              totalHeight += distance;
 
-        const { scrollHeight, offsetHeight, clientHeight } = element;
-        return Math.max(scrollHeight, offsetHeight, clientHeight);
-      };
-
-      const position = await new Promise((resolve) => {
-        let count = 0;
-        
-        const intervalId = setInterval(() => {
-          const { body } = document;
-          const availableScrollHeight = getScrollHeight(body);
-          window.scrollBy(0, step);
-          count += step;
-          if (count >= availableScrollHeight) {
-            clearInterval(intervalId);
-            resolve(count);
-          }
-        }, delay);
+              if(totalHeight >= scrollHeight){
+                  clearInterval(timer);
+                  resolve();
+              }
+          }, 600);
       });
-
-      return position;
-    },
-    scrollStep,
-    scrollDelay
-  );
-  return lastPosition;
+  });
 }
 
 module.exports = scrollPageToBottom;

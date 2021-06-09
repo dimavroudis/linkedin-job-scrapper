@@ -9,7 +9,7 @@ const BASEURL = "https://www.linkedin.com/jobs/search/";
 const DISTANCE = "10";
 
 const scrollToEnd = async (page) => {
-  await scrollPageToBottom(page, 1200, 600);
+  await scrollPageToBottom(page);
   const loadMoreBtn = await page.$(
     ".infinite-scroller__show-more-button--visible"
   );
@@ -57,6 +57,11 @@ async function scrapper(keyword, location, hash) {
   const page = await browser.newPage();
 
   await page.goto(url);
+  await page.setViewport({
+    width: 800,
+    height: 1200
+  });
+
   await scrollToEnd(page);
   const html = await page.content();
 
@@ -93,6 +98,7 @@ async function scrapper(keyword, location, hash) {
   });
   fs.writeFileSync(filePath, data);
 
+  console.log("LinkedIn:", url);
   console.log("Found Job Postings:", jobPostings.length);
   console.log("Outputs:", filePath);
 }
