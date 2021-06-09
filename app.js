@@ -3,7 +3,7 @@ const scrap = require("./scrapper");
 const helmet = require('helmet');
 const compression = require('compression');
 
-const port = 3200;
+const port = process.env.PORT || 5000;
 const staticOptions = {
   dotfiles: "ignore",
   etag: true,
