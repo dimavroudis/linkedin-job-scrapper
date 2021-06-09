@@ -46,7 +46,8 @@ async function scrapper(keyword, location, hash) {
   );
 
   const browser = await puppeteer.launch({
-    // headless: false,
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
     defaultViewport: {
       height: 1200,
       width: 800,
