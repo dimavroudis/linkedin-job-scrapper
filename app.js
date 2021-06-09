@@ -1,5 +1,7 @@
 const express = require("express");
 const scrap = require("./scrapper");
+const helmet = require('helmet');
+const compression = require('compression');
 
 const port = 3200;
 const staticOptions = {
@@ -13,6 +15,10 @@ const staticOptions = {
 
 // Start app
 const app = express();
+
+app.use(helmet()); // Protect from well-known web vulnerabilities 
+
+app.use(compression()); //Compress all routes
 
 // Return Endpoints index
 app.get("/", (req, res) => {

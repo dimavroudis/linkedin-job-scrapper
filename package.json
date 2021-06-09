@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "private": true,
+  "engines": {
+    "node": "14.17.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dimavroudis/linkedin-job-scrapper.git"
@@ -23,7 +27,9 @@
   "homepage": "https://github.com/dimavroudis/linkedin-job-scrapper#readme",
   "dependencies": {
     "cheerio": "*",
+    "compression": "^1.7.4",
     "express": "^4.17.1",
+    "helmet": "^4.6.0",
     "puppeteer": "^10.0.0",
     "string-hash-64": "^1.0.3"
   }
