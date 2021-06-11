@@ -8,4 +8,4 @@
 
 1. Install dependencies  `npm install`
 2. Start local server `npm start`
-3. Visit http//:localhost:5000
+3. Visit [localhost:5000](http//:localhost:5000)
