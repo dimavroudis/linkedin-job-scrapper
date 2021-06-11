@@ -6,6 +6,6 @@
 
 ## Run 
 
-1 Install dependencies  `npm install`
+1. Install dependencies  `npm install`
 2. Start local server `npm start`
 3. Visit http//:localhost:5000
